@@ -33,7 +33,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             cursor.execute('''
                 SELECT 
                     v.id, v.infinitive, v.past_simple, v.past_participle, 
-                    v.translation, v.image_url,
+                    v.translation, COALESCE(v.image_url, v.default_image_url) as image_url,
                     COALESCE(p.studied_count, 0) as studied_count,
                     COALESCE(p.is_mastered, false) as is_mastered
                 FROM irregular_verbs v

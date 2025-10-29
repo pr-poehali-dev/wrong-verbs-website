@@ -6,6 +6,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { useToast } from '@/hooks/use-toast';
 import VerbCard from '@/components/VerbCard';
 import ProgressStats from '@/components/ProgressStats';
+import GrammarTips from '@/components/GrammarTips';
 import Icon from '@/components/ui/icon';
 
 interface Verb {
@@ -134,10 +135,14 @@ const Index = () => {
         </header>
 
         <Tabs defaultValue="verbs" className="space-y-6">
-          <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
+          <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-3">
             <TabsTrigger value="verbs" className="flex items-center gap-2">
               <Icon name="Library" size={18} />
               Глаголы
+            </TabsTrigger>
+            <TabsTrigger value="tips" className="flex items-center gap-2">
+              <Icon name="Lightbulb" size={18} />
+              Правила
             </TabsTrigger>
             <TabsTrigger value="progress" className="flex items-center gap-2">
               <Icon name="TrendingUp" size={18} />
@@ -186,6 +191,10 @@ const Index = () => {
                 </p>
               </div>
             )}
+          </TabsContent>
+
+          <TabsContent value="tips" className="max-w-7xl mx-auto">
+            <GrammarTips />
           </TabsContent>
 
           <TabsContent value="progress" className="max-w-2xl mx-auto animate-fade-in">

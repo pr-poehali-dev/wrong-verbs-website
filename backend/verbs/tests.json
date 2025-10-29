@@ -1,0 +1,23 @@
+{
+  "tests": [
+    {
+      "name": "Get all verbs",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Mark verb as studied",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "action": "study",
+        "verbId": 1
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true
+      }
+    }
+  ]
+}

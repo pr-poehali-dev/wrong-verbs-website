@@ -1,0 +1,70 @@
+-- Таблица с неправильными глаголами
+CREATE TABLE IF NOT EXISTS irregular_verbs (
+    id SERIAL PRIMARY KEY,
+    infinitive VARCHAR(100) NOT NULL,
+    past_simple VARCHAR(100) NOT NULL,
+    past_participle VARCHAR(100) NOT NULL,
+    translation VARCHAR(200) NOT NULL,
+    image_url TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Таблица для отслеживания прогресса пользователя
+CREATE TABLE IF NOT EXISTS user_progress (
+    id SERIAL PRIMARY KEY,
+    verb_id INTEGER REFERENCES irregular_verbs(id),
+    studied_count INTEGER DEFAULT 0,
+    last_studied TIMESTAMP,
+    is_mastered BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Добавляем начальные глаголы
+INSERT INTO irregular_verbs (infinitive, past_simple, past_participle, translation) VALUES
+('be', 'was/were', 'been', 'быть'),
+('become', 'became', 'become', 'становиться'),
+('begin', 'began', 'begun', 'начинать'),
+('break', 'broke', 'broken', 'ломать'),
+('bring', 'brought', 'brought', 'приносить'),
+('build', 'built', 'built', 'строить'),
+('buy', 'bought', 'bought', 'покупать'),
+('catch', 'caught', 'caught', 'ловить'),
+('choose', 'chose', 'chosen', 'выбирать'),
+('come', 'came', 'come', 'приходить'),
+('do', 'did', 'done', 'делать'),
+('drink', 'drank', 'drunk', 'пить'),
+('eat', 'ate', 'eaten', 'есть'),
+('fall', 'fell', 'fallen', 'падать'),
+('feel', 'felt', 'felt', 'чувствовать'),
+('find', 'found', 'found', 'находить'),
+('fly', 'flew', 'flown', 'летать'),
+('forget', 'forgot', 'forgotten', 'забывать'),
+('get', 'got', 'got/gotten', 'получать'),
+('give', 'gave', 'given', 'давать'),
+('go', 'went', 'gone', 'идти'),
+('have', 'had', 'had', 'иметь'),
+('hear', 'heard', 'heard', 'слышать'),
+('know', 'knew', 'known', 'знать'),
+('leave', 'left', 'left', 'покидать'),
+('make', 'made', 'made', 'делать'),
+('meet', 'met', 'met', 'встречать'),
+('read', 'read', 'read', 'читать'),
+('run', 'ran', 'run', 'бежать'),
+('say', 'said', 'said', 'говорить'),
+('see', 'saw', 'seen', 'видеть'),
+('send', 'sent', 'sent', 'отправлять'),
+('sing', 'sang', 'sung', 'петь'),
+('sit', 'sat', 'sat', 'сидеть'),
+('sleep', 'slept', 'slept', 'спать'),
+('speak', 'spoke', 'spoken', 'говорить'),
+('spend', 'spent', 'spent', 'тратить'),
+('stand', 'stood', 'stood', 'стоять'),
+('swim', 'swam', 'swum', 'плавать'),
+('take', 'took', 'taken', 'брать'),
+('teach', 'taught', 'taught', 'учить'),
+('tell', 'told', 'told', 'рассказывать'),
+('think', 'thought', 'thought', 'думать'),
+('understand', 'understood', 'understood', 'понимать'),
+('wear', 'wore', 'worn', 'носить'),
+('win', 'won', 'won', 'выигрывать'),
+('write', 'wrote', 'written', 'писать');
